@@ -19,6 +19,15 @@
 #
 # denis@concatenum.com
 
+# variáveis de ambiente para o notify-send funcionar a partir do cron
+# https://askubuntu.com/questions/298608/notify-send-doesnt-work-from-crontab
+user=$(whoami)
+pid=$(pgrep -u $user gnome-session | head -n 1)
+dbus=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$pid/environ | sed 's/DBUS_SESSION_BUS_ADDRESS=//' )
+export DBUS_SESSION_BUS_ADDRESS=$dbus
+export HOME=/home/$user
+export DISPLAY=:0
+
 BTC_TICKER=$(curl -s https://www.mercadobitcoin.net/api/BTC/ticker/)
 BTC_TIME=$(echo $BTC_TICKER | jq '.[].date' --raw-output; )
 BTC_LAST="1 BTC = `(echo $BTC_TICKER | jq '.[].last' --raw-output)` BRL"
