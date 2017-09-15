@@ -11,7 +11,8 @@ O `btc-notify` busca o JSON da API de dados do Mercado Bitcoin, faz o parse dos 
 Clone este repositório ou baixe o script no local desejado:
 
 ```
-wget -q https://raw.githubusercontent.com/denisdl/btc-notify/master/btc-notify.sh; chmod +x btc-notify.sh
+wget -q https://raw.githubusercontent.com/denisdl/btc-notify/master/btc-notify.sh
+chmod +x btc-notify.sh
 ```
 
 ##### Configuração da notificação no Slack
