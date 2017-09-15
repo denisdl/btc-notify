@@ -5,6 +5,7 @@ O `btc-notify` busca o JSON da API de dados do Mercado Bitcoin, faz o parse dos 
 ##### Dependências
 
  * [jq \[https://stedolan.github.io/jq/\]](https://stedolan.github.io/jq/) para o parsing do JSON
+ * [espeak(http://espeak.sourceforge.net/) (opcional) para notificação por som sintetizado text-to-speach
 
 ##### Instalação
 
@@ -24,7 +25,11 @@ BTC_NOTIFY_SLACK_HEBHOOK="URL do webhook Slack"
 ```
 Para criar sua URL do webhook Slack, veja em [https://api.slack.com/incoming-webhook](https://api.slack.com/incoming-webhooks)
 
-Para a notificação ser enviada pelo `notify-send`, basta substituir o conteúdo da variável `BTC_NOTIFY_APP` ou removê-la.
+Para a notificação ser enviada pelo `notify-send`, basta substituir o conteúdo da variável `BTC_NOTIFY_APP` por "notify-send" ou removê-la.
+
+##### Configuração da notificação no text-to-speach `espeak`
+
+Informe "espeak" na variável de ambiente `BTC_NOTIFY_APP`. Neste formato a notificação é apenas do valor inteiro, desconsiderando os decimais.
 
 ##### Sugestões de uso
 

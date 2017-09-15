@@ -20,6 +20,10 @@ BTC_LAST="1 BTC = `(echo $BTC_TICKER | jq '.[].last' --raw-output)` BRL"
 if [ "$BTC_NOTIFY_APP" = "slack" ]
 then
   curl -q -X POST --data-urlencode 'payload={"username": "btc-notify", "text": "'"$BTC_TIME\n$BTC_LAST"'", "icon_emoji": ":moneybag:"}' $BTC_NOTIFY_SLACK_HEBHOOK
+elif [ "$BTC_NOTIFY_APP" = "espeak" ]
+then
+  BTC_LAST=$(echo $BTC_LAST | cut -d\. -f1 | sed 's/BTC/Bitcoin/g')
+  espeak "$BTC_LAST" & disown 
 else
   /usr/bin/notify-send "$(echo $BTC_TIME)" "$(echo $BTC_LAST)" \
   -t 3000 --icon="$DIR/img/bitcoin-logo.png"
@@ -50,13 +54,18 @@ fi
 # duas variáveis de ambiente em seu ~/.zshrc ou ~/.bashrc:
 # BTC_NOTIFY_APP="slack"
 # BTC_NOTIFY_SLACK_HEBHOOK="URL do webhook Slack"
-#
 # Para criar sua URL do webhook Slack, veja em https://api.slack.com/incoming-webhooks
 #
-# Dependências: jq (https://stedolan.github.io/jq/)
+# Para notificação text-to-speach com "espeak", informe "espeak" em `BTC_NOTIFY_APP`.
+# Neste formato a notificação é apenas do valor inteiro, desconsiderando os decimais.
+#
+# Dependências:
+# jq (https://stedolan.github.io/jq/) para o parsing do JSON
+# espeak (http://espeak.sourceforge.net/) (opcional) para notificação por som sintetizado text-to-speach
+#
 # Desenvolvido e testado no Ubuntu 16.04
 #
-# v1.2.0
+# v1.3.0
 #
 # denis@concatenum.com
 # --------------------
