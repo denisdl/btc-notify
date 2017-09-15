@@ -11,13 +11,21 @@
 # 
 # Insira uma chamada em seu crontab (neste exemplo a notificação será acionada uma vez a cada dez minutos):
 # 01,11,21,31,41,51 * * * * /home/denis/concatenum/btc-notify/btc-notify.sh
-# 
+#
+# Para enviar a notificação no Slack, configure 
+# duas variáveis de ambiente em seu ~/.zshrc ou ~/.bashrc:
+# BTC_NOTIFY_APP="slack"
+# BTC_NOTIFY_SLACK_HEBHOOK="URL do webhook Slack"
+#
+# Para criar sua URL do webhook Slack, veja em https://api.slack.com/incoming-webhooks
+#
 # Dependências: jq (https://stedolan.github.io/jq/)
 # Desenvolvido e testado no Ubuntu 16.04
 #
-# v1.0.1
+# v1.1.0
 #
 # denis@concatenum.com
+# --------------------
 
 # variáveis de ambiente para o notify-send funcionar a partir do cron
 # https://askubuntu.com/questions/298608/notify-send-doesnt-work-from-crontab
