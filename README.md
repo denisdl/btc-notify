@@ -1,4 +1,4 @@
-## btc-notify v1.0.0
+## btc-notify v1.1.0
 
 O `btc-notify` busca o JSON da API de dados do Mercado Bitcoin, faz o parse dos dados e envia uma notificação no desktop com a última cotação do Bitcoin negociado nesta exchange e seu timestamp.
 
