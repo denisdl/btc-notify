@@ -14,6 +14,17 @@ Clone este repositório ou baixe o script no local desejado:
 wget -q https://raw.githubusercontent.com/denisdl/btc-notify/master/btc-notify.sh; chmod +x btc-notify.sh
 ```
 
+##### Configuração da notificação no Slack
+
+Configure duas variáveis de ambiente em seu `~/.zshrc` ou `~/.bashrc`:
+```
+BTC_NOTIFY_APP="slack"
+BTC_NOTIFY_SLACK_HEBHOOK="URL do webhook Slack"
+```
+Para criar sua URL do webhook Slack, veja em \[https://api.slack.com/incoming-webhooks\](https://api.slack.com/incoming-webhooks)
+
+Para a notificação ser enviada pelo `notify-send`, basta substituir o conteúdo da variável `BTC_NOTIFY_APP` ou removê-la.
+
 ##### Sugestões de uso
 
 Insira um *alias* em seu `~/.zshrc` ou `~/.bashrc`:
