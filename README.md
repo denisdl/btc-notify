@@ -5,7 +5,7 @@ O `btc-notify` busca o JSON da API de dados do Mercado Bitcoin, faz o parse dos 
 ##### Dependências
 
  * [jq \[https://stedolan.github.io/jq/\]](https://stedolan.github.io/jq/) para o parsing do JSON
- * [espeak \[http://espeak.sourceforge.net/\](http://espeak.sourceforge.net/) (opcional) para notificação por som sintetizado text-to-speach
+ * [espeak \[http://espeak.sourceforge.net/\]](http://espeak.sourceforge.net/) (opcional) para notificação por som sintetizado text-to-speach
 
 ##### Instalação
 
