@@ -21,7 +21,7 @@ Configure duas variáveis de ambiente em seu `~/.zshrc` ou `~/.bashrc`:
 BTC_NOTIFY_APP="slack"
 BTC_NOTIFY_SLACK_HEBHOOK="URL do webhook Slack"
 ```
-Para criar sua URL do webhook Slack, veja em \[https://api.slack.com/incoming-webhooks\](https://api.slack.com/incoming-webhooks)
+Para criar sua URL do webhook Slack, veja em [https://api.slack.com/incoming-webhook](https://api.slack.com/incoming-webhooks)
 
 Para a notificação ser enviada pelo `notify-send`, basta substituir o conteúdo da variável `BTC_NOTIFY_APP` ou removê-la.
 
