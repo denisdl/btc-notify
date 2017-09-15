@@ -1,4 +1,4 @@
-## btc-notify v1.1.0
+## btc-notify v1.2.0
 
 O `btc-notify` busca o JSON da API de dados do Mercado Bitcoin, faz o parse dos dados e envia uma notificação no desktop com a última cotação do Bitcoin negociado nesta exchange e seu timestamp.
 
@@ -17,7 +17,7 @@ chmod +x btc-notify.sh
 
 ##### Configuração da notificação no Slack
 
-Configure duas variáveis de ambiente em seu `~/.zshrc` ou `~/.bashrc`:
+Por default as notificações são feitas pelo `notify-send`. Para uso no Slack, configure duas variáveis de ambiente em seu `~/.zshrc` ou `~/.bashrc`:
 ```
 BTC_NOTIFY_APP="slack"
 BTC_NOTIFY_SLACK_HEBHOOK="URL do webhook Slack"
