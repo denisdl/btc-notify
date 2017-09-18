@@ -1,4 +1,16 @@
 #!/bin/bash
+#
+# O `btc-notify` busca o JSON da API de dados do Mercado Bitcoin, 
+# faz o parse dos dados e envia uma notificação no desktop com a 
+# última cotação do Bitcoin negociado nesta exchange e seu timestamp.
+#
+# Veja instruções de uso em https://github.com/denisdl/btc-notify
+#
+# v1.3.0
+#
+# denis@concatenum.com
+# --------------------
+#
 # variáveis de ambiente para o notify-send funcionar a partir do cron
 # https://askubuntu.com/questions/298608/notify-send-doesnt-work-from-crontab
 user=$(whoami)
@@ -23,49 +35,8 @@ then
 elif [ "$BTC_NOTIFY_APP" = "espeak" ]
 then
   BTC_LAST=$(echo $BTC_LAST | cut -d\. -f1 | sed 's/BTC/Bitcoin/g')
-  espeak "$BTC_LAST" & disown 
+  /usr/bin/padsp /usr/bin/espeak -vpt "$BTC_LAST" & disown
 else
   /usr/bin/notify-send "$(echo $BTC_TIME)" "$(echo $BTC_LAST)" \
   -t 3000 --icon="$DIR/img/bitcoin-logo.png"
 fi
-
-# O `btc-notify` busca o JSON da API de dados do Mercado Bitcoin, 
-# faz o parse dos dados e envia uma notificação no desktop com a 
-# última cotação do Bitcoin negociado nesta exchange e seu timestamp.
-# 
-# Configuração da notificação no Slack
-# 
-# Configure duas variáveis de ambiente em seu ~/.zshrc ou ~/.bashrc:
-# BTC_NOTIFY_APP="slack"
-# BTC_NOTIFY_SLACK_HEBHOOK="URL do webhook Slack"
-# 
-# Para criar sua URL do webhook Slack, veja em https://api.slack.com/incoming-webhooks
-# Para a notificação ser enviada pelo notify-send, basta substituir o conteúdo da variável BTC_NOTIFY_APP ou removê-la.
-# 
-# Sugestões de uso
-# 
-# Insira um *alias* em seu ~/.zshrc ou ~/.bashrc:
-# alias btc-notify="/home/denis/concatenum/btc-notify/btc-notify.sh > /dev/null 2>&1 & disown"
-# 
-# Insira uma chamada em seu crontab (neste exemplo a notificação será acionada uma vez a cada dez minutos):
-# 01,11,21,31,41,51 * * * * /home/denis/concatenum/btc-notify/btc-notify.sh
-#
-# Para enviar a notificação no Slack, configure 
-# duas variáveis de ambiente em seu ~/.zshrc ou ~/.bashrc:
-# BTC_NOTIFY_APP="slack"
-# BTC_NOTIFY_SLACK_HEBHOOK="URL do webhook Slack"
-# Para criar sua URL do webhook Slack, veja em https://api.slack.com/incoming-webhooks
-#
-# Para notificação text-to-speach com "espeak", informe "espeak" em `BTC_NOTIFY_APP`.
-# Neste formato a notificação é apenas do valor inteiro, desconsiderando os decimais.
-#
-# Dependências:
-# jq (https://stedolan.github.io/jq/) para o parsing do JSON
-# espeak (http://espeak.sourceforge.net/) (opcional) para notificação por som sintetizado text-to-speach
-#
-# Desenvolvido e testado no Ubuntu 16.04
-#
-# v1.3.0
-#
-# denis@concatenum.com
-# --------------------
